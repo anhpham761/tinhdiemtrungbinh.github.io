@@ -1,0 +1,155 @@
+<!DOCTYPE>
+<html>
+<head>
+<link rel="stylesheet" href="css1.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js">
+</script>
+<script>
+$(document).ready(function(){
+  $("button:reset#set").click(function(){
+	
+	
+	$("table#bangtinh").append("<tr  id=new height=20px width=100%><td class=stt ></td><td class=ten ></td><td class=toan></td><td class=ly ></td><td class=hoa ></td><td class=tb ></td></tr>");
+	$("td.stt").html(function(n){
+	return 1+n;
+	});
+	
+	$("td.ten:last").html(function(){
+	return $("input:text#fullname").val();
+	});
+	 $("td.ly:last").html(function(){
+	return $("input:text#diemly").val();
+	});
+	 $("td.toan:last").html(function(){
+	return $("input:text#diemtoan").val();
+	});
+	$("td.hoa:last").html(function(){
+	return $("input:text#diemhoa").val();
+	});
+	$("td.tb:last").html("?");
+	$("input:text#fullname").val("");
+	$("input:text#diemtoan").val("");
+	$("input:text#diemly").val("");
+	$("input:text#diemhoa").val("");
+
+  });
+    
+  $("button#tinhtb").click(function(){
+  
+  $("table#bangtinh tr").each(function(){
+	var dt=$(this).children(".toan").html();
+	parseFloat(dt);
+	var dl=$(this).children(".ly").html();
+	parseFloat(dl);
+	var dh=$(this).children(".hoa").html();
+	parseFloat(dh);
+	var dcong =parseFloat(dt) + parseFloat(dl) + parseFloat(dh);
+	var dtb= parseFloat(dcong)/3;
+	$(this).children(".tb").html(dtb.toFixed(1));
+	});
+	});
+ $("button#slg").click(function(){
+	$("table#bangtinh tr").each(function(){
+	var kt=$(this).children(".tb").html();
+	if (kt >= 8.0 )
+	{
+	$(this).children().addClass("intro");
+	}
+ });
+ });
+ 
+});
+</script>
+<style>
+.intro {
+  
+  color: red;
+}
+.stt{
+	width: 10.25%;
+	text-align: center;
+}
+.toan{
+	width: 10.25%;
+	text-align: center;
+}
+.ly{
+	width: 10.25%;
+	text-align: center;
+}
+.hoa{
+	width: 10.25%;
+	text-align: center;
+}
+.tb{
+	width: 10.25%;
+	text-align: center;
+}
+.ten{
+	width: 30.75%;
+	text-align: center;
+}
+</style>
+</head>
+<body>
+<h1 font face="Georgia, Garamond, Times New Roman" color="#FF0000" style="padding-left:40%">
+  Class Marksheet</h1>
+
+
+  <table border="0" cellpadding="0" cellspacing="0" style="padding-left:40%" id="form1">
+    <tr>
+      <td width="100">Họ và tên:</td>
+      <td><input type="text" name="fullname" id="fullname"/></td>
+    </tr>
+    <tr>
+      <td width="100">Điểm toán</td>
+      <td><input type="text" name=diemtoan" id="diemtoan"/></td>
+    </tr>
+	<tr>
+      <td width="100">Điểm lý</td>
+      <td><input type="text" name=diemly" id="diemly"/></td>
+    </tr>
+	<tr>
+      <td width="100">Điểm hoá</td>
+      <td><input type="text" name=diemhoa" id="diemhoa"/></td>
+    </tr>
+    <tr>
+      <td width="100"><br><br></td>
+      <td>
+        <button type="reset" id="set">Nhập</button>
+		
+      </td>
+    </tr>
+  </table>
+  
+
+<font face="Verdana, Tahoma, Arial" size="3">
+<table id="bangtinh" border="3" cellpadding="0" cellspacing="1"  width="100%">
+  <tr id="new" width=100% height="20px">
+  <th width=10.25%>STT
+  </th>
+  <th width=30.75%>Họ và tên
+  </th>
+  <th width=10.25%>Toán
+  </th>
+  <th width=10.25%>Lý
+  </th>
+  <th width=10.25%>Hoá
+  </th>
+  <th width=10.25%>Trung Bình
+  </th>
+  </tr>
+
+
+  </table>
+  <ul>
+  <li width="50%"  style="float:left">
+  <button id="tinhtb" >Tính điểm trung bình</button>
+  </li>
+  <li  style="float:left">
+  <button id="slg">Xác định học sinh giỏi</button>
+  </li>
+  <ul>
+</font>
+</body>
+</html>
